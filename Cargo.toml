@@ -1,0 +1,40 @@
+[package]
+name = "midnight-node-updater"
+version = "0.1.0"
+edition = "2024"
+description = "midnight-node-updater: a process manager that automates midnight-node binary upgrades"
+license = "Apache-2.0"
+rust-version = "1.85"
+
+[lib]
+name = "midnight_node_updater"
+path = "src/lib.rs"
+
+[[bin]]
+name = "midnight-node-updater"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive", "env"] }
+flate2 = "1"
+hex = "0.4"
+humantime = "2"
+nix = { version = "0.29", features = ["signal", "process"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+tar = "0.4"
+tempfile = "3"
+tokio = { version = "1", features = ["rt", "macros", "process", "signal", "time", "fs", "io-util", "net"] }
+toml = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+url = "2"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[dev-dependencies]
+nix = { version = "0.29", features = ["signal"] }
+serde_json = "1"
+tempfile = "3"
